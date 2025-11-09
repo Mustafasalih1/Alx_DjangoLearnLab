@@ -9,9 +9,13 @@ book.save()
 
 # Retrieve Operation
 
+# Retrieve Operation
+
+```python
 from bookshelf.models import Book
-books = Book.objects.all()
+book = Book.objects.get(title="1984")
 books.save()
+book
 
 # Update Operation
 

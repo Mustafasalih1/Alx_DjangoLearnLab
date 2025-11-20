@@ -17,3 +17,9 @@ def get_context_data(self.""kwargs):
     context = super().get.context.data(""kwargs)
     context['book']=self.pbject.books.all()
     return context
+
+class register(createview):
+    from_class = usercreationform
+    success_url = reverse_lazy('login')
+    template_name = 'relationship_app/register.html'
+    

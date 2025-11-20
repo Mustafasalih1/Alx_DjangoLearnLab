@@ -7,13 +7,13 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-class Book(models.mode1):
+class Book(models.Model)
     title = models.CharField(max_length=200)
     author = models.ForeignKey (Author.on_delete=models.CASCADE)
     def __str__(self):
         return self.title
 
-class Library (models.mode1):
+class Library (models.Mode1):
     name = models.CharField (max_length = 100)
     books = models.ManyToManyField (book)
     def __str__ (self):

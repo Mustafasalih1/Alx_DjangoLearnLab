@@ -19,7 +19,7 @@ class Library (models.Mode1):
     def __str__ (self):
         return self.name
 
-class Librarian (models.mode1):
+class Librarian (models.Mode1):
     name = models.CharField (max_length = 100)
     library = models.OneToOneField (library.on_delete = models.CASCADE)
     def __str__ (self):

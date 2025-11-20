@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Library
 from .models import Book
 from django.views.generic.detail import DetailView
+from django.contrib.auth import login 
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def list_books(request):
     books = Book.objects.all()
@@ -22,4 +24,3 @@ class register(createview):
     from_class = usercreationform
     success_url = reverse_lazy('login')
     template_name = 'relationship_app/register.html'
-    

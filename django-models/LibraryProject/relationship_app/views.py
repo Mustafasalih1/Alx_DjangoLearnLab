@@ -21,6 +21,6 @@ def get_context_data(self.""kwargs):
     return context
 
 class register(createview):
-    from_class = usercreationform
+    from_class = UserCreationForm()
     success_url = reverse_lazy('login')
     template_name = 'relationship_app/register.html'

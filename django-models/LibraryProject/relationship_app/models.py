@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import user
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import permission_required
+from .models import Book
 
 # Create your models here.
 class Author(models.Model):
@@ -33,12 +36,37 @@ def create_user_profile(sender,instance,created,""kwargs):
     if created:
         userprofile.objects.create(user=instance)
         
-class Meta:
-    [
-        ('can_add_book','can_add_book'),
-        ('can_change_book','can_change_book'),
-        ('can_delete_book','can_delete_book'),
-    ]        
+ class Meta:
+    permissions = [
+            ("add_book_permission", "Can add book"),
+            ("change_book_permission", "Can edit book"),
+            ("delete_book_permission", "Can delete book"),
+        ]
 
+@permission_required('relationship_app.add_book_permission')
+def add_book(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        Book.objects.create(title=title, author=author)
+        return redirect('book_list')
+    return render(request, 'add_book.html')
+
+@permission_required('relationship_app.change_book_permission')
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    if request.method == "POST":
+        book.title = request.POST.get("title")
+        book.author = request.POST.get("author")
+        book.save()
+        return redirect('book_list')
+    return render(request, 'edit_book.html', {'book': book})
+
+
+@permission_required('relationship_app.delete_book_permission')
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    book.delete()
+    return redirect('book_list')
     
 

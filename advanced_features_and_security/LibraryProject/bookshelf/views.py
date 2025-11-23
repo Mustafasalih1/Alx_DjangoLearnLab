@@ -3,8 +3,8 @@ from django.contrib.auth.decorater import permission_required,has_permission
 
 
 @permission_required('bookshelf.can_view', raise_exception=True)
-def edit_view(request,plc):
-    
-     return render(request, 'edit_template.html',
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'bookshelf/book_list.html', {'books': books})
 
 # Create your views here.

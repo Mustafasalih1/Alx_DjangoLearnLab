@@ -38,35 +38,8 @@ def create_user_profile(sender,instance,created,""kwargs):
         
  class Meta:
     permissions = [
-            ("add_book_permission", "can_add_book"),
-            ("change_book_permission", "can_change_book"),
-            ("delete_book_permission", "can_delete_book"),
+            ("can_add_book", "can_add_book"),
+            ("can_change_book", "can_change_book"),
+            ("can_delete_book", "can_delete_book"),
         ]
-
-@permission_required('relationship_app.add_book_permission')
-def add_book(request):
-    if request.method == 'POST':
-        title = request.POST.get('title')
-        author = request.POST.get('author')
-        Book.objects.create(title=title, author=author)
-        return redirect('book_list')
-    return render(request, 'add_book.html')
-
-@permission_required('relationship_app.change_book_permission')
-def edit_book(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    if request.method == "POST":
-        book.title = request.POST.get("title")
-        book.author = request.POST.get("author")
-        book.save()
-        return redirect('book_list')
-    return render(request, 'edit_book.html', {'book': book})
-
-
-@permission_required('relationship_app.delete_book_permission')
-def delete_book(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    book.delete()
-    return redirect('book_list')
-    
 

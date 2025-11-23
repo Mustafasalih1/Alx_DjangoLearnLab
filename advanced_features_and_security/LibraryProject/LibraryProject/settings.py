@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'bookshelf',
     'relationship_app',
     'bookshelf.CustomUser',
+    'ExampleForm',
+    
     
 ]
 

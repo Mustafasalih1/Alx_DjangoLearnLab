@@ -33,5 +33,12 @@ def create_user_profile(sender,instance,created,""kwargs):
     if created:
         userprofile.objects.create(user=instance)
         
-        
+class meta:
+    [
+        ('can_add_book','can_add_book'),
+        ('can_change_book','can_change_book'),
+        ('can_delete_book','can_delete_book'),
+    ]        
+
+    
 

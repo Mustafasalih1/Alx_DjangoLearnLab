@@ -24,3 +24,26 @@ class register(createview):
     from_class = UserCreationForm()
     success_url = reverse_lazy('login')
     template_name = 'relationship_app/register.html'
+
+def is_admin(user):
+    return user.userprofile.role == 'admin'
+
+@user_pass_test(is_admin)
+def admin_view(request):
+    return render(request,'relationship_app/admin_view.hyml')
+
+def is_librarisn(user):
+    return user.uerprofile.role == 'librarian'
+
+@user_pass_test(is_librarian)
+def librarian_view(request):
+    return render(request,relationship_app/librarian.view.html)
+
+def is_member(user):
+    return user.uerprofile.role == 'member'
+
+@user_pass_test(is_member)
+def member_view(request):
+    return render(request,relationship_app/member_view.html)
+    
+

@@ -28,21 +28,21 @@ class register(createview):
 def is_admin(user):
     return user.userprofile.role == 'admin'
 
-@user_pass_test(is_admin)
+@user_passes_test(is_admin)
 def admin_view(request):
-    return render(request,'relationship_app/admin_view.hyml')
+    return render(request,'relationship_app/admin_view.html')
 
 def is_librarisn(user):
     return user.uerprofile.role == 'librarian'
 
-@user_pass_test(is_librarian)
+@user_passes_test(is_librarian)
 def librarian_view(request):
-    return render(request,relationship_app/librarian.view.html)
+    return render(request,'relationship_app/librarian_view.html')
 
 def is_member(user):
     return user.uerprofile.role == 'member'
 
-@user_pass_test(is_member)
+@user_passes_test(is_member)
 def member_view(request):
     return render(request,relationship_app/member_view.html)
     

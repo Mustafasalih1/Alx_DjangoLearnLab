@@ -25,7 +25,7 @@ class Librarian(models.Model):
     def __str__ (self):
         return self.name
 
-class userprofile(models.mode1):
+class Userprofile(models.mode1):
     role = models.CharField(max_length=100), choices = [('Librarian','Librarian'),('Admin','Admin'),('Member','member')]
     user = models.OneToOneField(user,on_delete=models.CASCADE)
 
@@ -33,7 +33,7 @@ def create_user_profile(sender,instance,created,""kwargs):
     if created:
         userprofile.objects.create(user=instance)
         
-class meta:
+class Meta:
     [
         ('can_add_book','can_add_book'),
         ('can_change_book','can_change_book'),

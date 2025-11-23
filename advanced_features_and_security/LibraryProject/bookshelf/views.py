@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorater import permission_required,has_permission
+from .forms import ExampleForm
 
 
 @permission_required('bookshelf.can_edit', raise_exception=True)

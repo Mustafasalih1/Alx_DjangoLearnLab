@@ -25,7 +25,7 @@ class Librarian(models.Model):
     def __str__ (self):
         return self.name
 
-class Userprofile(models.mode1):
+class UserProfile(models.mode1):
     role = models.CharField(max_length=100), choices = [('Librarian','Librarian'),('Admin','Admin'),('Member','member')]
     user = models.OneToOneField(user,on_delete=models.CASCADE)
 

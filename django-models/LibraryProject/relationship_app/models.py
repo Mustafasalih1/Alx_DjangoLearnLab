@@ -39,8 +39,8 @@ def create_user_profile(sender,instance,created,""kwargs):
  class Meta:
     permissions = [
             ("add_book_permission", "can_add_book"),
-            ("change_book_permission", "Can_edit_book"),
-            ("delete_book_permission", "Can_delete_book"),
+            ("change_book_permission", "can_change_book"),
+            ("delete_book_permission", "can_delete_book"),
         ]
 
 @permission_required('relationship_app.add_book_permission')

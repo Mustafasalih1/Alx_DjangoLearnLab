@@ -46,6 +46,22 @@ class CustomUserManager(BaseUserManager):
        return user
 
 
+    class Meta:
+        permissions = [
+    class Meta:
+        permissions = [
+            
+    class Meta:
+        permissions = [
+            ("can_view", "Can view articles"),
+            ("can_create", "Can create articles"),
+            ("can_edit", "Can edit articles"),
+            ("can_delete", "Can delete articles"),
+        ]
+            
+            
+
+
        
 
     

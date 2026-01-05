@@ -1,0 +1,7 @@
+API Endpoints:
+
+GET /api/books/          -> List all books
+GET /api/books/<id>/     -> Retrieve a single book
+POST /api/books/create/  -> Create a book (authenticated)
+PUT /api/books/<id>/update/  -> Update a book (authenticated)
+DELETE /api/books/<id>/delete/ -> Delete a book (authenticated)
